@@ -2,8 +2,11 @@
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/edgarsousa/Desktop/electronic-orders-system/electronic-orders-system/output/main'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003C28, symSize: 0x104 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _validarNome, symObjAddr: 0x0, symBinAddr: 0x10000376C, symSize: 0x7C }
   - { offsetInCU: 0x59, offset: 0x59, size: 0x8, addend: 0x0, symName: _utilizadores, symBinAddr: 0x100008000, symSize: 0x0 }
-  - { offsetInCU: 0xCD, offset: 0xCD, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003C28, symSize: 0x104 }
-  - { offsetInCU: 0xF5, offset: 0xF5, size: 0x8, addend: 0x0, symName: _registo, symObjAddr: 0x104, symBinAddr: 0x100003D2C, symSize: 0x120 }
+  - { offsetInCU: 0xDA, offset: 0xDA, size: 0x8, addend: 0x0, symName: _validarNome, symObjAddr: 0x0, symBinAddr: 0x10000376C, symSize: 0x7C }
+  - { offsetInCU: 0x102, offset: 0x102, size: 0x8, addend: 0x0, symName: _validarNumero, symObjAddr: 0x7C, symBinAddr: 0x1000037E8, symSize: 0x7C }
+  - { offsetInCU: 0x12A, offset: 0x12A, size: 0x8, addend: 0x0, symName: _registo, symObjAddr: 0xF8, symBinAddr: 0x100003864, symSize: 0x2F8 }
+  - { offsetInCU: 0x15C, offset: 0x15C, size: 0x8, addend: 0x0, symName: _login, symObjAddr: 0x3F0, symBinAddr: 0x100003B5C, symSize: 0xAC }
+  - { offsetInCU: 0x18E, offset: 0x18E, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x49C, symBinAddr: 0x100003C08, symSize: 0x118 }
 ...
