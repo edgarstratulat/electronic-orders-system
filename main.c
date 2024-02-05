@@ -14,12 +14,13 @@ typedef struct
 
 // Array utilizadores
 Utilizador utilizadores[10];
+int NumUtilizador = 0;
 
 // Função registo
 void registo(Utilizador utilizadores[]);
 
 // Função login
-void login(Utilizador utilizadores[]);
+int login(Utilizador utilizadores[], int NumUtilizador);
 
 int validarNome(const char *letra)
 {
@@ -109,52 +110,112 @@ void registo(Utilizador utilizadores[])
         }
     } while (strcmp(NovoUtilizador.passe, NovoUtilizador.confirmacaopasse) != 0);
 
-    printf("Registo concluído com sucesso!");
+    utilizadores[NumUtilizador++] = NovoUtilizador;
+
+    printf("Registo concluído com sucesso!\n");
 }
 
-void login(Utilizador utilizadores[])
+int login(Utilizador utilizadores[], int numUtilizador)
 {
     Utilizador UtilizadorExistente;
 
-    printf("Email:\n");
-    scanf("%s", UtilizadorExistente.email);
-    printf("Palavra-passe:\n");
-    scanf("%s", UtilizadorExistente.passe);
+    printf("Email: ");
+    scanf("%s", UtilizadorExistente.email); 
+
+    printf("Palavra-passe: ");
+    scanf("%s", UtilizadorExistente.passe); 
+
+    for (int i = 0; i < numUtilizador; i++)
+    {
+        if (strcmp(UtilizadorExistente.email, utilizadores[i].email) == 0 &&
+            strcmp(UtilizadorExistente.passe, utilizadores[i].passe) == 0)
+        {
+            return 1;
+        }
+    }
+
+    return 0;
 }
 
 int main()
 {
-
     int opcao;
+    int opcaologin;
+    int usuarioAutenticado = 0; // Adicionada variável para controlar autenticação
 
-    printf("Bem-vindo a loja de eletrónicos!\n\n");
-    printf("Selecione uma opção!\n");
-    printf("1. Registar\n");
-    printf("2. Entrar\n");
-    printf("3. Sair\n");
-    printf("Opção: ");
-    scanf("%d", &opcao);
-
-    // Switch para selecionar opções do menu
-    switch (opcao)
+    do
     {
-    case 1:
-        printf("Opção 1 selecionada!\n\n");
-        registo(utilizadores);
+        printf("Bem-vindo a loja de eletrónicos!\n\n");
 
-        break;
+        if (usuarioAutenticado)
+        {
+            // Se o usuário estiver autenticado, exibir menu
+            printf("Selecione uma opção\n");
+            printf("1. Pesquisar por Loja\n");
+            printf("2. Pesquisar por produto\n");
+            printf("3. Carrinho de Compras\n");
+            printf("4. Sair\n");
+            printf("Opção: ");
+            scanf("%d", &opcaologin);
+        }
+        else
+        {
+            // Se o usuário não estiver autenticado, exibir opções de login/registo
+            printf("Selecione uma opção!\n");
+            printf("1. Registar\n");
+            printf("2. Entrar\n");
+            printf("3. Sair\n");
+            printf("Opção: ");
+            scanf("%d", &opcao);
+        }
 
-    case 2:
-        printf("Opção 2 selecionada!\n");
-        login(utilizadores);
-        break;
+        switch (opcao)
+        {
+        case 1:
+            printf("Opção 1 selecionada!\n\n");
+            registo(utilizadores);
+            break;
 
-    case 3:
+        case 2:
+            printf("Opção 2 selecionada!\n");
+            if (!usuarioAutenticado && login(utilizadores, NumUtilizador))
+            {
+                // Apenas autenticar se o usuário não estiver autenticado
+                printf("Login bem-sucedido!\n");
+                usuarioAutenticado = 1; // Atualizar o status de autenticação
+            }
+            else if (usuarioAutenticado)
+            {
+                // Opções do menu após o login bem-sucedido
+                printf("Opção do menu selecionada!\n");
+            }
+            else
+            {
+                printf("Email ou Palavra-passe incorretos. Tente novamente.\n");
+            }
+            break;
+
+        case 3:
+            printf("Tenha um bom dia!\n");
+            break;
+
+        default:
+            printf("Opção inválida!\n");
+            break;
+        }
+    } while (opcao != 3);
+
+    switch (opcaologin)
+    {
+
+        // Mais cases que falta
+    case 4:
         printf("Tenha um bom dia!\n");
         break;
-
+    
     default:
-        printf("Opção inválida!");
         break;
     }
+
+    return 0;
 }
