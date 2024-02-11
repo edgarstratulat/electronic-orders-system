@@ -21,12 +21,6 @@ This function implements login features. Email and password are validated to ens
 
 This feature allows users to place product orders after selecting a store. Once the store is chosen, the list of electronic products is displayed with their respective costs. After selecting the desired product(s), users need to proceed to the "Select Cart" option to view the total amount for the selected products.
 
-## Functionality 4: Shopping Cart
-
-This functionality includes the following requirements:
-- Display the total cost of purchases.
-- Confirm the order.
-
 ## Getting Started
 
 To run the program, follow these steps:
